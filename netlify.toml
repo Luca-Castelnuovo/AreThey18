@@ -1,0 +1,35 @@
+[build]
+  base = ""
+  publish = ""
+  # command = "npm run build"
+  # functions = "project/functions/"
+
+  [build.processing]
+    skip_processing = false
+  [build.processing.css]
+    bundle = true
+    minify = true
+  [build.processing.js]
+    bundle = true
+    minify = true
+  [build.processing.html]
+    pretty_urls = true
+  [build.processing.images]
+    compress = true
+
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    X-Permitted-Cross-Domain-Policies = "none"
+    Referrer-Policy = "SAME-ORIGIN"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[redirects]] # Catch-All
+  from = "/*"
+  to = "/index.html"
+  status = 200
